@@ -1,7 +1,8 @@
 import csv
 import os
-from django.core.management import BaseCommand
+
 from django.apps import apps
+from django.core.management import BaseCommand
 
 app_models = apps.get_app_config('reviews').get_models()
 filepaths = [

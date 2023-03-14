@@ -1,40 +1,29 @@
-from django.db.models import Avg
 from django.conf import settings
-from django.core.mail import send_mail
 from django.contrib.auth.tokens import default_token_generator
+from django.core.mail import send_mail
+from django.db.models import Avg
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.filters import OrderingFilter
-from rest_framework import viewsets, status, filters
-from rest_framework.permissions import (
-    IsAuthenticatedOrReadOnly,
-    IsAuthenticated,
-)
+from rest_framework import filters, status, viewsets
 from rest_framework.decorators import action
+from rest_framework.filters import OrderingFilter
+from rest_framework.permissions import (IsAuthenticated,
+                                        IsAuthenticatedOrReadOnly)
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import AccessToken
 
-from .permissions import (
-    IsAdmin,
-    AdminOrReadOnly,
-    IsAdminModeratorAuthorOrReadOnly,
-)
+from reviews.models import Category, Genre, Review, Title
+from users.models import User
+
 from .filtersets import TitleFilter
 from .mixins import CreateListViewSet
 from .pagination import CustomPagination
-from .serializers import (
-    CategorySerializer,
-    GenreSerializer,
-    CommentSerializer,
-    ReviewSerializer,
-    TitleListSerializer,
-    TitleCreateSerializer,
-    UserSerializer,
-    SignUpSerializer,
-    TokenSerializer,
-)
-from reviews.models import Category, Genre, Title, Review
-from users.models import User
+from .permissions import (AdminOrReadOnly, IsAdmin,
+                          IsAdminModeratorAuthorOrReadOnly)
+from .serializers import (CategorySerializer, CommentSerializer,
+                          GenreSerializer, ReviewSerializer, SignUpSerializer,
+                          TitleCreateSerializer, TitleListSerializer,
+                          TokenSerializer, UserSerializer)
 
 
 class CategoryViewSet(CreateListViewSet):

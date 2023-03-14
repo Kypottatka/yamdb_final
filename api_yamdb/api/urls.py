@@ -1,17 +1,8 @@
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
-from .views import (
-    CategoryViewSet,
-    GenreViewSet,
-    TitleViewSet,
-    ReviewViewSet,
-    CommentViewSet,
-    UserViewSet,
-    SignUpViewSet,
-    GetJWTToken,
-)
-
+from .views import (CategoryViewSet, CommentViewSet, GenreViewSet, GetJWTToken,
+                    ReviewViewSet, SignUpViewSet, TitleViewSet, UserViewSet)
 
 v1_router = DefaultRouter()
 v1_router.register("titles", TitleViewSet, basename="title")

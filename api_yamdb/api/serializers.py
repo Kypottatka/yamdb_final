@@ -1,9 +1,8 @@
+from django.conf import settings
+from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.db import IntegrityError
 from rest_framework import serializers
-from django.contrib.auth.validators import UnicodeUsernameValidator
-from django.conf import settings
-
-from reviews.models import Category, Genre, Title, Review, Comment
+from reviews.models import Category, Comment, Genre, Review, Title
 from users.models import User
 from users.validators import username_validator
 

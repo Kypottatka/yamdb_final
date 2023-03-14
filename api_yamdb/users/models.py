@@ -1,10 +1,9 @@
-from django.contrib.auth.models import AbstractUser
-from django.db import models
 from django.conf import settings
+from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.validators import UnicodeUsernameValidator
+from django.db import models
 
 from .validators import username_validator
-
 
 USER = "user"
 MODERATOR = "moderator"

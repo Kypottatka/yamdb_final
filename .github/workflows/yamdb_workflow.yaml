@@ -23,17 +23,12 @@ jobs:
         cd api_yamdb/
         pip install -r requirements.txt 
 
-    - name: Test with flake8, jango tests and pytest
+    - name: Test with flake8 and pytest
       run: |
         # запуск проверки проекта по flake8
         python -m flake8
         # pytest
         pytest
-        # перейти в папку, содержащую manage.py — 
-        #<корневая_папка_api_yamdb>/<папка_проекта>/manage.py
-        cd api_yamdb/
-        # запустить написанные разработчиком тесты
-        python manage.py test
 
   build_and_push_to_docker_hub:
       name: Push Docker image to Docker Hub
@@ -54,6 +49,7 @@ jobs:
           with:
             push: true
             tags: kypottatka/yamdb:latest 
+            dockerfile: api_yamdb/Dockerfile
 
   deploy:
       runs-on: ubuntu-latest

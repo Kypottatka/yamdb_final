@@ -51,7 +51,7 @@ jobs:
           with:
             push: true
             tags: kypottatka/yamdb_final:latest 
-            dockerfile: api_yamdb/Dockerfile
+            dockerfile: ./Dockerfile
 
   deploy:
       runs-on: ubuntu-latest

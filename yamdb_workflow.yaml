@@ -50,8 +50,8 @@ jobs:
           uses: docker/build-push-action@v2 
           with:
             push: true
-            tags: kypottatka/yamdb:latest 
-            dockerfile: api_yamdb/Dockerfile
+            tags: kypottatka/yamdb_final:latest 
+            dockerfile: ./Dockerfile
 
   deploy:
       runs-on: ubuntu-latest

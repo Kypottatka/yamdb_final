@@ -51,7 +51,7 @@ jobs:
           context: .
           file: api_yamdb/Dockerfile
           push: true
-          tags: ${{ secrets.USER }}/yamdb_final:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/yamdb_final:latest
 
   deploy:
     if: github.ref == 'refs/heads/master'
@@ -66,9 +66,10 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            cd /home/kypottatka/yamdb_final
+            cd yamdb_final/
             sudo docker-compose stop
             sudo docker-compose rm web
+            sudo systemctl restart docker
             touch .env
             echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
             echo DB_NAME=${{ secrets.DB_NAME }} >> .env
